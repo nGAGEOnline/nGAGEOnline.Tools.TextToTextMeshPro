@@ -45,12 +45,9 @@ namespace Editor
 			Undo.RecordObject(gameObject, "Text-To-TextMeshPro");
 			Undo.DestroyObjectImmediate(component);
 			CreateTMPText(textData, gameObject);
-
-			
-			Debug.Log($"[ {gameObject.name} ] converted to TextMeshProUGUI");
 		}
 
-		private static TextMeshProUGUI CreateTMPText(TMPTextData textData, GameObject target)
+		private static void CreateTMPText(TMPTextData textData, GameObject target)
 		{
 			var tmpText = target.AddComponent<TextMeshProUGUI>();
 			tmpText.enabled = textData.Enabled;
@@ -67,7 +64,6 @@ namespace Editor
 			tmpText.text = textData.Text;
 			tmpText.color = textData.Color;
 			tmpText.raycastTarget = textData.RayCastTarget;
-			return tmpText;
 		}
 		private static TMPTextData GetTextData(Text component)
 			=> new ()
